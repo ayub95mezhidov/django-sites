@@ -1,0 +1,17 @@
+<h1>Мой список дел</h1>
+
+<form action="/addTodoItem/" method = "post">
+	{% csrf_token %}
+    <input type="text" name="content">
+    <input type="submit" value="Add Todo Item">
+</form> 
+
+<ul> 
+    {% for i in all_items %}  
+    <li>{{i.content}} 
+    	<form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+    		<input type="submit" name="" value="Delete">
+    	</form>
+    </li> 
+    {% endfor %} 
+</ul>
